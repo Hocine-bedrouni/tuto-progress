@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./pages/Home";
+import "./css/app.css";
+import Menu from "./components/menu";
+import TechAdd from "./pages/TechAdd";
+import TechList from "./pages/TechList";
+import {Routes, Route} from "react-router-dom"
+
+import {useState} from 'react';
 
 function App() {
+
+const [techs, setTech] = useState([]);
+
+function ajouteTechno(tech) {
+  console.log('ajouteTechno', tech)
+  setTech([...techs, tech ]);
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Menu />
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/add' element={<TechAdd ajouteTechno={ajouteTechno} />} />
+      <Route path='/list' element={<TechList techs={techs}/>} />
+    </Routes>
+    </>
   );
 }
 
