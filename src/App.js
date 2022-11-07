@@ -6,6 +6,7 @@ import TechList from "./pages/TechList";
 import {Routes, Route} from "react-router-dom"
 
 import {useState} from 'react';
+import AddMovie from "./pages/AddMovie";
 
 function App() {
 
@@ -22,6 +23,7 @@ function ajouteTechno(tech) {
       <Route path='/' element={<Home />} />
       <Route path='/add' element={<TechAdd ajouteTechno={ajouteTechno} />} />
       <Route path='/list' element={<TechList techs={techs}/>} />
+      <Route path="/ajout" element={<AddMovie />} />
     </Routes>
     </>
   );
